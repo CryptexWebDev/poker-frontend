@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import { useProfile } from '@/hooks/use-profile'
-import { SafeArea } from '@/components/layout/safe-area'
 import { getInitData } from '@/lib/telegram'
 
 export function HomePage() {
@@ -9,38 +8,36 @@ export function HomePage() {
 
   if (!hasInitData) {
     return (
-      <SafeArea className="flex flex-col items-center justify-center p-4">
-        <p className="text-tg-hint text-center">
-          Open this app from Telegram to use it.
-        </p>
-      </SafeArea>
+      <div className="flex min-h-full flex-col items-center justify-center p-4">
+        <p className="text-tg-hint text-center">Open this app from Telegram to use it.</p>
+      </div>
     )
   }
 
   if (isLoading && !profile) {
     return (
-      <SafeArea className="flex flex-col items-center justify-center p-4">
+      <div className="flex min-h-full flex-col items-center justify-center p-4">
         <div className="animate-pulse text-tg-hint">Loading...</div>
-      </SafeArea>
+      </div>
     )
   }
 
   if (error) {
     return (
-      <SafeArea className="flex flex-col items-center justify-center p-4">
+      <div className="flex min-h-full flex-col items-center justify-center p-4">
         <p className="text-red-400 text-center">
           {error instanceof Error ? error.message : 'Something went wrong'}
         </p>
-      </SafeArea>
+      </div>
     )
   }
 
   const p = profile
   if (!p && !isLoading) {
     return (
-      <SafeArea className="flex flex-col items-center justify-center p-4">
+      <div className="flex min-h-full flex-col items-center justify-center p-4">
         <p className="text-tg-hint text-center">Could not load profile.</p>
-      </SafeArea>
+      </div>
     )
   }
 
@@ -49,7 +46,7 @@ export function HomePage() {
   const displayName = [p.first_name, p.last_name].filter(Boolean).join(' ') || p.username || 'Player'
 
   return (
-    <SafeArea className="p-4">
+    <div className="p-4">
       <header className="mb-6">
         <h1 className="text-xl font-semibold text-tg-text">Poker</h1>
       </header>
@@ -78,6 +75,6 @@ export function HomePage() {
         <h2 className="text-tg-hint text-sm font-medium mb-1">Balance</h2>
         <p className="text-2xl font-bold text-tg-text">{p.balance} TON</p>
       </section>
-    </SafeArea>
+    </div>
   )
 }
