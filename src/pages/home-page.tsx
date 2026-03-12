@@ -1,12 +1,9 @@
-import { useEffect } from 'react'
 import { useProfile } from '@/hooks/use-profile'
 import { useAuthStore } from '@/stores/auth-store'
 import { getInitData } from '@/lib/telegram'
-import { useQueryClient } from '@tanstack/react-query'
 import { UserBalanceBar } from '@/components/rooms/user-balance-bar'
 import { RoomsList } from '@/components/rooms/rooms-list'
 import { CreateRoomButton } from '@/components/rooms/create-room-button'
-import { tablesQueryKey } from '@/hooks/use-tables'
 import type { Profile } from '@/types/api'
 
 export function HomePage() {
@@ -79,11 +76,6 @@ export function HomePage() {
 }
 
 function HomePageContent({ profile }: { profile: Profile }) {
-  const queryClient = useQueryClient()
-  useEffect(() => {
-    queryClient.refetchQueries({ queryKey: tablesQueryKey })
-  }, [queryClient])
-
   return (
     <div className="p-4 flex flex-col min-h-full min-h-0">
       <UserBalanceBar profile={profile} className="mb-4" />
