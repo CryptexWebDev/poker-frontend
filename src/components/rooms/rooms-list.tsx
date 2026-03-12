@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { useTablesInfinite } from '@/hooks/use-tables'
 import { RoomCard } from './room-card'
+import type { TableItem } from '@/types/api'
 import clsx from 'clsx'
 
 export function RoomsList({ className }: { className?: string }) {
@@ -46,7 +47,8 @@ export function RoomsList({ className }: { className?: string }) {
     )
   }
 
-  const tables = data?.pages.flatMap((p) => p.tables) ?? []
+  const rawTables = data?.pages.flatMap((p) => p?.tables ?? []) ?? []
+  const tables = rawTables.filter((t): t is TableItem => t != null && typeof t.id === 'number')
 
   return (
     <div className={clsx('flex flex-col gap-3', className)}>
