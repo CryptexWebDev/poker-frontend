@@ -126,3 +126,42 @@ body {
   letter-spacing: -0.02em;
   text-align: center;
 }
+
+/* Create room button: pill shape, blue gradient, hover glow */
+.btn-create-room {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  background: linear-gradient(
+    180deg,
+    rgba(60, 101, 182, 0.95) 0%,
+    var(--color-accent, #3c65b6) 50%,
+    rgba(40, 75, 140, 0.95) 100%
+  );
+  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 510;
+  font-size: 1.4rem;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+  text-align: center;
+  color: var(--color-tg-button-text, #ffffff);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.btn-create-room:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(60, 101, 182, 0.5);
+  filter: brightness(1.08);
+}
+.btn-create-room:active {
+  transform: scale(0.98);
+}
+.btn-create-room:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn-create-room:disabled:hover {
+  box-shadow: none;
+  filter: none;
+}

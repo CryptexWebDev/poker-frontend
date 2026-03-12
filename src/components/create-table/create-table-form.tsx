@@ -53,10 +53,7 @@ export function CreateTableForm({ className }: { className?: string }) {
       <button
         type="submit"
         disabled={createTable.isPending}
-        className={clsx(
-          'w-full rounded-2xl bg-accent py-3 px-4 text-tg-button-text font-semibold',
-          'hover:opacity-90 active:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed'
-        )}
+        className="btn-create-room"
       >
         {createTable.isPending ? 'Создание...' : 'Создать свою комнату'}
       </button>
