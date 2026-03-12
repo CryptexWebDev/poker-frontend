@@ -16,3 +16,24 @@ export interface Profile {
   referrals_count: number
   referrals_earned: string
 }
+
+export interface TableItem {
+  id: number
+  name: string
+  owner_id: number
+  max_players: number
+  buy_in: string
+  status: string
+  players_count: number
+}
+
+export interface TablesListResponse {
+  tables: TableItem[]
+  total: number
+}
+
+export interface CreateTableBody {
+  name: string
+  max_players: number
+  buy_in: number
+}

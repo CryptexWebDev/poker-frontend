@@ -1,6 +1,6 @@
 import { env } from '@/env'
 import { useAuthStore } from '@/stores/auth-store'
-import type { AuthResponse, Profile } from '@/types/api'
+import type { AuthResponse, Profile, TableItem, TablesListResponse, CreateTableBody } from '@/types/api'
 
 const baseUrl = env.apiUrl
 
@@ -39,4 +39,23 @@ export async function authTelegram(initData: string, refCode: string | null): Pr
 export async function fetchProfile(): Promise<Profile> {
   const res = await fetch(`${baseUrl}/me`, { headers: getAuthHeaders() })
   return handleResponse<Profile>(res)
+}
+
+const TABLES_PAGE_SIZE = 20
+
+export async function fetchTables(offset: number): Promise<TablesListResponse> {
+  const res = await fetch(
+    `${baseUrl}/tables?limit=${TABLES_PAGE_SIZE}&offset=${offset}`,
+    { headers: getAuthHeaders() }
+  )
+  return handleResponse<TablesListResponse>(res)
+}
+
+export async function createTable(body: CreateTableBody): Promise<TableItem> {
+  const res = await fetch(`${baseUrl}/tables`, {
+    method: 'POST',
+    headers: getAuthHeaders(),
+    body: JSON.stringify(body),
+  })
+  return handleResponse<TableItem>(res)
 }

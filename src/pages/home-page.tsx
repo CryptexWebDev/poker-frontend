@@ -1,7 +1,9 @@
-import clsx from 'clsx'
 import { useProfile } from '@/hooks/use-profile'
 import { useAuthStore } from '@/stores/auth-store'
 import { getInitData } from '@/lib/telegram'
+import { UserBalanceBar } from '@/components/rooms/user-balance-bar'
+import { RoomsList } from '@/components/rooms/rooms-list'
+import { CreateRoomButton } from '@/components/rooms/create-room-button'
 
 export function HomePage() {
   const { data: profile, isLoading, error } = useProfile()
@@ -66,38 +68,14 @@ export function HomePage() {
 
   if (!p) return null
 
-  const displayName = [p.first_name, p.last_name].filter(Boolean).join(' ') || p.username || 'Player'
-
   return (
-    <div className="p-4">
-      <header className="mb-6">
-        <h1 className="text-xl font-semibold text-tg-text">Poker</h1>
-      </header>
-
-      <section
-        className={clsx(
-          'rounded-2xl p-4 mb-4',
-          'bg-tg-secondary'
-        )}
-        aria-label="User info"
-      >
-        <h2 className="text-tg-hint text-sm font-medium mb-2">Profile</h2>
-        <p className="text-tg-text font-medium">{displayName}</p>
-        {p.username && (
-          <p className="text-tg-hint text-sm">@{p.username}</p>
-        )}
-      </section>
-
-      <section
-        className={clsx(
-          'rounded-2xl p-4',
-          'bg-tg-secondary'
-        )}
-        aria-label="Balance"
-      >
-        <h2 className="text-tg-hint text-sm font-medium mb-1">Balance</h2>
-        <p className="text-2xl font-bold text-tg-text">{p.balance} TON</p>
-      </section>
+    <div className="p-4 flex flex-col min-h-0">
+      <UserBalanceBar profile={p} className="mb-4" />
+      <h1 className="text-lg font-semibold text-tg-text mb-4">Создай либо найди стол</h1>
+      <div className="flex-1 min-h-0 overflow-auto">
+        <RoomsList className="mb-4" />
+      </div>
+      <CreateRoomButton />
     </div>
   )
 }
