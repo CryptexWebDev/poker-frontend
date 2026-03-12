@@ -1,3 +1,5 @@
+import { retrieveRawInitData, retrieveLaunchParams, isTMA } from '@tma.js/sdk'
+
 declare global {
   interface Window {
     Telegram?: {
@@ -6,32 +8,46 @@ declare global {
         initDataUnsafe?: { start_param?: string }
         ready: () => void
         expand: () => void
-        close: () => void
       }
     }
   }
 }
 
-const TG = typeof window !== 'undefined' ? window.Telegram?.WebApp : undefined
+/**
+ * Telegram Mini App helpers using @tma.js/sdk.
+ * In components you can also use: useRawInitData(), useLaunchParams(), useThemeParams(), etc. from @tma.js/sdk-react.
+ */
 
 /**
  * Raw initData string for backend auth (POST /auth/telegram).
- * Empty when not in Telegram Mini App context.
+ * Uses @tma.js/sdk when available; fallback for dev/SSR.
  */
 export function getInitData(): string {
-  return TG?.initData ?? ''
+  if (typeof window === 'undefined') return ''
+  try {
+    const raw = retrieveRawInitData()
+    if (raw) return raw
+  } catch {
+    // not in TMA or SDK not ready
+  }
+  return window.Telegram?.WebApp?.initData ?? ''
 }
 
 /**
  * start_param from link (e.g. REF_ABC12345 for referral).
- * From tgWebAppStartParam or initDataUnsafe.start_param.
  */
 export function getStartParam(): string | null {
   if (typeof window === 'undefined') return null
-  const params = new URLSearchParams(window.location.search)
-  const fromUrl = params.get('tgWebAppStartParam')
+  try {
+    const params = retrieveLaunchParams() as { start_param?: string }
+    const start = params.start_param ?? null
+    if (start) return start
+  } catch {
+    // not in TMA
+  }
+  const fromUrl = new URLSearchParams(window.location.search).get('tgWebAppStartParam')
   if (fromUrl) return fromUrl
-  return TG?.initDataUnsafe?.start_param ?? null
+  return window.Telegram?.WebApp?.initDataUnsafe?.start_param ?? null
 }
 
 /**
@@ -44,13 +60,18 @@ export function getRefCodeFromStartParam(): string | null {
 }
 
 export function isInsideTelegram(): boolean {
-  return Boolean(TG?.initData)
+  if (typeof window === 'undefined') return false
+  try {
+    return isTMA()
+  } catch {
+    return Boolean(window.Telegram?.WebApp?.initData)
+  }
 }
 
 export function notifyTelegramReady(): void {
-  TG?.ready()
+  window.Telegram?.WebApp?.ready()
 }
 
 export function expandTelegram(): void {
-  TG?.expand()
+  window.Telegram?.WebApp?.expand()
 }
