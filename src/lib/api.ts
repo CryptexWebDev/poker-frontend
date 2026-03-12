@@ -44,6 +44,20 @@ export async function fetchProfile(): Promise<Profile> {
 const TABLES_PAGE_SIZE = 20
 const FETCH_TABLES_TIMEOUT_MS = 12_000
 
+function normalizeTablesResponse(data: unknown): TablesListResponse {
+  if (Array.isArray(data)) {
+    return { tables: data as TableItem[], total: data.length }
+  }
+  if (data && typeof data === 'object' && 'tables' in data && 'total' in data) {
+    const o = data as { tables: unknown; total: unknown }
+    return {
+      tables: Array.isArray(o.tables) ? (o.tables as TableItem[]) : [],
+      total: typeof o.total === 'number' ? o.total : 0,
+    }
+  }
+  return { tables: [], total: 0 }
+}
+
 export async function fetchTables(offset: number): Promise<TablesListResponse> {
   const controller = new AbortController()
   const timeoutId = setTimeout(() => controller.abort(), FETCH_TABLES_TIMEOUT_MS)
@@ -52,7 +66,8 @@ export async function fetchTables(offset: number): Promise<TablesListResponse> {
       `${baseUrl}/tables?limit=${TABLES_PAGE_SIZE}&offset=${offset}`,
       { headers: getAuthHeaders(), signal: controller.signal }
     )
-    return handleResponse<TablesListResponse>(res)
+    const data = await handleResponse<unknown>(res)
+    return normalizeTablesResponse(data)
   } catch (err) {
     if (err instanceof Error && err.name === 'AbortError') {
       throw new Error('Таймаут загрузки комнат. Проверьте интернет.')
