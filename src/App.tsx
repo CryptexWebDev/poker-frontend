@@ -17,23 +17,27 @@ function AppContent() {
   }, [])
 
   return (
-    <Routes>
-      <Route path="/" element={<AppLayout />}>
+    <div className="flex min-h-0 flex-1 flex-col">
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
         <Route index element={<HomePage />} />
         <Route path="create" element={<CreateGamePage />} />
         <Route path="profile" element={<ProfilePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
-      </Route>
-    </Routes>
+        </Route>
+      </Routes>
+    </div>
   )
 }
 
 export default function App() {
   return (
-    <AppProvider>
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
-    </AppProvider>
+    <div className="flex min-h-0 flex-1 flex-col">
+      <AppProvider>
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
+      </AppProvider>
+    </div>
   )
 }
