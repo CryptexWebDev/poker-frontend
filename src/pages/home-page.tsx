@@ -4,13 +4,20 @@ import { getInitData } from '@/lib/telegram'
 import { UserBalanceBar } from '@/components/rooms/user-balance-bar'
 import { RoomsList } from '@/components/rooms/rooms-list'
 import { CreateRoomButton } from '@/components/rooms/create-room-button'
-import type { Profile } from '@/types/api'
 
 export function HomePage() {
-  const { data: profile, isLoading, error } = useProfile()
-  const { isAuthLoading, authError, token } = useAuthStore()
+  const { data: profile, isLoading: profileLoading, error: profileError } = useProfile()
+  const { isAuthLoading, authError, token, _hasHydrated } = useAuthStore()
   const hasInitData = Boolean(getInitData())
   const isKnownTelegramUser = Boolean(token)
+
+  if (!_hasHydrated) {
+    return (
+      <div className="flex min-h-full flex-col items-center justify-center p-4">
+        <div className="animate-pulse text-tg-hint">Загрузка...</div>
+      </div>
+    )
+  }
 
   if (!hasInitData && !isKnownTelegramUser) {
     return (
@@ -23,7 +30,7 @@ export function HomePage() {
   if (isAuthLoading && !profile) {
     return (
       <div className="flex min-h-full flex-col items-center justify-center p-4">
-        <div className="animate-pulse text-tg-hint">Checking authorization...</div>
+        <div className="animate-pulse text-tg-hint">Проверка авторизации...</div>
       </div>
     )
   }
@@ -31,56 +38,45 @@ export function HomePage() {
   if (authError) {
     return (
       <div className="flex min-h-full flex-col items-center justify-center p-4">
-        <p className="text-red-400 text-center mb-2">
-          {authError}
-        </p>
+        <p className="text-red-400 text-center mb-2">{authError}</p>
         <p className="text-tg-hint text-center text-sm">
-          Open the app from Telegram again. If it persists, the server may need to allow this app&apos;s domain (CORS).
+          Откройте приложение снова из Telegram. Если не помогает — проверьте настройки CORS на сервере.
         </p>
       </div>
     )
   }
 
-  if (isLoading && !profile) {
+  if (profileLoading && !profile) {
     return (
       <div className="flex min-h-full flex-col items-center justify-center p-4">
-        <div className="animate-pulse text-tg-hint">Loading...</div>
+        <div className="animate-pulse text-tg-hint">Загрузка профиля...</div>
       </div>
     )
   }
 
-  if (error) {
+  if (profileError) {
     return (
       <div className="flex min-h-full flex-col items-center justify-center p-4">
         <p className="text-red-400 text-center">
-          {error instanceof Error ? error.message : 'Something went wrong'}
+          {profileError instanceof Error ? profileError.message : 'Ошибка загрузки'}
         </p>
       </div>
     )
   }
 
-  const p = profile
-  if (!p && !isLoading) {
+  if (!profile) {
     return (
       <div className="flex min-h-full flex-col items-center justify-center p-4">
-        <p className="text-tg-hint text-center">Could not load profile.</p>
+        <p className="text-tg-hint text-center">Не удалось загрузить профиль.</p>
       </div>
     )
   }
 
-  if (!p) return null
-
   return (
-    <HomePageContent profile={p} />
-  )
-}
-
-function HomePageContent({ profile }: { profile: Profile }) {
-  return (
-    <div className="p-4 flex flex-col min-h-full min-h-0">
+    <div className="p-4 flex flex-col min-h-full">
       <UserBalanceBar profile={profile} className="mb-4" />
       <h1 className="text-lg font-semibold text-tg-text mb-4">Создай либо найди стол</h1>
-      <div className="flex-1 min-h-0 overflow-auto">
+      <div className="flex-1 min-h-32 overflow-auto">
         <RoomsList className="mb-4" />
       </div>
       <CreateRoomButton />

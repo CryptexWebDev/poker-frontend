@@ -22,7 +22,8 @@ export interface TableItem {
   name: string
   owner_id: number
   max_players: number
-  buy_in: string
+  /** Backend sends Decimal as number in JSON */
+  buy_in: number | string
   status: string
   players_count: number
 }
