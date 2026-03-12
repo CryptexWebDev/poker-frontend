@@ -7,10 +7,11 @@ import { CreateRoomButton } from '@/components/rooms/create-room-button'
 
 export function HomePage() {
   const { data: profile, isLoading, error } = useProfile()
-  const { isAuthLoading, authError } = useAuthStore()
+  const { isAuthLoading, authError, token } = useAuthStore()
   const hasInitData = Boolean(getInitData())
+  const isKnownTelegramUser = Boolean(token)
 
-  if (!hasInitData) {
+  if (!hasInitData && !isKnownTelegramUser) {
     return (
       <div className="flex min-h-full flex-col items-center justify-center p-4">
         <p className="text-tg-hint text-center">Open this app from Telegram to use it.</p>
@@ -69,7 +70,7 @@ export function HomePage() {
   if (!p) return null
 
   return (
-    <div className="p-4 flex flex-col min-h-0">
+    <div className="p-4 flex flex-col min-h-full min-h-0">
       <UserBalanceBar profile={p} className="mb-4" />
       <h1 className="text-lg font-semibold text-tg-text mb-4">Создай либо найди стол</h1>
       <div className="flex-1 min-h-0 overflow-auto">
