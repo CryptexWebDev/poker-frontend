@@ -67,6 +67,7 @@ export function ProfilePage() {
       >
         <p className="text-tg-text font-medium">{displayName}</p>
         {profile.username && <p className="text-tg-hint text-sm">@{profile.username}</p>}
+        <p className="text-tg-hint text-sm mt-1">Telegram ID: {profile.telegram_id}</p>
       </section>
       <section className={clsx('rounded-2xl p-4 bg-tg-secondary')} aria-label="Balance">
         <h2 className="text-tg-hint text-sm font-medium mb-1">Баланс</h2>

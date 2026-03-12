@@ -23,9 +23,10 @@ export function UserBalanceBar({ profile, className }: UserBalanceBarProps) {
       </div>
       <div className="min-w-0 flex-1">
         <p className="text-tg-text font-medium truncate">{displayName}</p>
-        <p className="text-tg-hint text-sm flex items-center gap-1">
+        <p className="text-tg-hint text-sm flex items-center gap-1 flex-wrap">
           <span>{balance}</span>
           <span className="text-accent">TON</span>
+          <span className="text-tg-hint text-xs">· ID {profile.telegram_id}</span>
           <span className="text-accent ml-1" aria-hidden>+</span>
         </p>
       </div>
