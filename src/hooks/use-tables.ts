@@ -22,7 +22,7 @@ export function useCreateTable() {
   return useMutation({
     mutationFn: (body: CreateTableBody) => createTable(body),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: tablesQueryKey })
+      queryClient.removeQueries({ queryKey: tablesQueryKey })
     },
   })
 }

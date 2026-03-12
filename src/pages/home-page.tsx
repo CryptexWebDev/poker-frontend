@@ -1,9 +1,13 @@
+import { useEffect } from 'react'
 import { useProfile } from '@/hooks/use-profile'
 import { useAuthStore } from '@/stores/auth-store'
 import { getInitData } from '@/lib/telegram'
+import { useQueryClient } from '@tanstack/react-query'
 import { UserBalanceBar } from '@/components/rooms/user-balance-bar'
 import { RoomsList } from '@/components/rooms/rooms-list'
 import { CreateRoomButton } from '@/components/rooms/create-room-button'
+import { tablesQueryKey } from '@/hooks/use-tables'
+import type { Profile } from '@/types/api'
 
 export function HomePage() {
   const { data: profile, isLoading, error } = useProfile()
@@ -70,8 +74,19 @@ export function HomePage() {
   if (!p) return null
 
   return (
+    <HomePageContent profile={p} />
+  )
+}
+
+function HomePageContent({ profile }: { profile: Profile }) {
+  const queryClient = useQueryClient()
+  useEffect(() => {
+    queryClient.refetchQueries({ queryKey: tablesQueryKey })
+  }, [queryClient])
+
+  return (
     <div className="p-4 flex flex-col min-h-full min-h-0">
-      <UserBalanceBar profile={p} className="mb-4" />
+      <UserBalanceBar profile={profile} className="mb-4" />
       <h1 className="text-lg font-semibold text-tg-text mb-4">Создай либо найди стол</h1>
       <div className="flex-1 min-h-0 overflow-auto">
         <RoomsList className="mb-4" />

@@ -31,8 +31,8 @@ export function RoomsList({ className }: { className?: string }) {
 
   if (isLoading) {
     return (
-      <div className={clsx('p-4 animate-pulse text-tg-hint text-center', className)}>
-        Загрузка комнат...
+      <div className={clsx('p-4 text-center', className)}>
+        <span className="inline-block animate-pulse text-accent font-medium">Загрузка комнат...</span>
       </div>
     )
   }
