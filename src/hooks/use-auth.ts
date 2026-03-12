@@ -22,6 +22,7 @@ export function useTelegramAuth() {
     const refCode = getRefCodeFromStartParam()
     const result = await authTelegram(initData, refCode)
     setToken(result.token)
+    useAuthStore.getState().setAuthError(null)
     queryClient.invalidateQueries({ queryKey: ['profile'] })
     return true
   }, [getToken, setToken, queryClient])
@@ -35,15 +36,26 @@ export function useTelegramAuth() {
 export function useTelegramAuthOnMount() {
   const { login, isInsideTelegram } = useTelegramAuth()
   const queryClient = useQueryClient()
+  const { setAuthLoading, setAuthError } = useAuthStore()
 
   useEffect(() => {
     if (!isInsideTelegram) return
     let cancelled = false
+    setAuthLoading(true)
+    setAuthError(null)
     login()
       .then(() => {
         if (!cancelled) queryClient.invalidateQueries({ queryKey: ['profile'] })
       })
-      .catch(() => {})
+      .catch((err) => {
+        if (!cancelled) {
+          const msg = err instanceof Error ? err.message : 'Authorization failed'
+          setAuthError(msg)
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setAuthLoading(false)
+      })
     return () => { cancelled = true }
-  }, [isInsideTelegram, login, queryClient])
+  }, [isInsideTelegram, login, queryClient, setAuthLoading, setAuthError])
 }
