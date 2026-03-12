@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --tg-viewport-height: 100vh;
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--tg-theme-bg-color, #1c1c1e);
+  color: var(--tg-theme-text-color, #ffffff);
+}
+
+#root {
+  min-height: 100vh;
+  min-height: var(--tg-viewport-height, 100vh);
+}
+
+.safe-area-insets {
+  padding-top: var(--tg-safe-area-inset-top, 0);
+  padding-bottom: var(--tg-safe-area-inset-bottom, 0);
+  padding-left: var(--tg-safe-area-inset-left, 0);
+  padding-right: var(--tg-safe-area-inset-right, 0);
+}

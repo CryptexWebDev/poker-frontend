@@ -1,0 +1,83 @@
+import clsx from 'clsx'
+import { useProfile } from '@/hooks/use-profile'
+import { SafeArea } from '@/components/layout/safe-area'
+import { getInitData } from '@/lib/telegram'
+
+export function HomePage() {
+  const { data: profile, isLoading, error } = useProfile()
+  const hasInitData = Boolean(getInitData())
+
+  if (!hasInitData) {
+    return (
+      <SafeArea className="flex flex-col items-center justify-center p-4">
+        <p className="text-tg-hint text-center">
+          Open this app from Telegram to use it.
+        </p>
+      </SafeArea>
+    )
+  }
+
+  if (isLoading && !profile) {
+    return (
+      <SafeArea className="flex flex-col items-center justify-center p-4">
+        <div className="animate-pulse text-tg-hint">Loading...</div>
+      </SafeArea>
+    )
+  }
+
+  if (error) {
+    return (
+      <SafeArea className="flex flex-col items-center justify-center p-4">
+        <p className="text-red-400 text-center">
+          {error instanceof Error ? error.message : 'Something went wrong'}
+        </p>
+      </SafeArea>
+    )
+  }
+
+  const p = profile
+  if (!p && !isLoading) {
+    return (
+      <SafeArea className="flex flex-col items-center justify-center p-4">
+        <p className="text-tg-hint text-center">Could not load profile.</p>
+      </SafeArea>
+    )
+  }
+
+  if (!p) return null
+
+  const displayName = [p.first_name, p.last_name].filter(Boolean).join(' ') || p.username || 'Player'
+
+  return (
+    <SafeArea className="p-4">
+      <header className="mb-6">
+        <h1 className="text-xl font-semibold text-tg-text">Poker</h1>
+      </header>
+
+      <section
+        className={clsx(
+          'rounded-2xl p-4 mb-4',
+          'bg-tg-secondary'
+        )}
+        aria-label="User info"
+      >
+        <h2 className="text-tg-hint text-sm font-medium mb-2">Profile</h2>
+        <p className="text-tg-text font-medium">{displayName}</p>
+        {p.username && (
+          <p className="text-tg-hint text-sm">@{p.username}</p>
+        )}
+      </section>
+
+      <section
+        className={clsx(
+          'rounded-2xl p-4',
+          'bg-tg-secondary'
+        )}
+        aria-label="Balance"
+      >
+        <h2 className="text-tg-hint text-sm font-medium mb-1">Balance</h2>
+        <p className="text-2xl font-bold text-tg-text">{p.balance} TON</p>
+      </section>
+    </SafeArea>
+  )
+}
