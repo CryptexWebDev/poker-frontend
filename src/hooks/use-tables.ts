@@ -3,7 +3,6 @@ import { fetchTables, createTable } from '@/lib/api'
 import type { CreateTableBody } from '@/types/api'
 
 export const tablesQueryKey = ['tables'] as const
-const TABLES_PAGE_SIZE = 20
 
 export function useTablesInfinite() {
   return useInfiniteQuery({
