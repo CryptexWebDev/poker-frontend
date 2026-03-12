@@ -5,9 +5,11 @@ import { BottomTabBar } from '@/components/layout/bottom-tab-bar'
 export function AppLayout() {
   return (
     <div className="app-layout-root flex flex-col overflow-hidden bg-tg-bg">
-      <main className="min-h-0 flex-1 overflow-auto">
-        <SafeArea className="min-h-full">
-          <Outlet />
+      <main className="min-h-0 flex-1 flex flex-col overflow-auto">
+        <SafeArea className="min-h-full flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col min-h-full">
+            <Outlet />
+          </div>
         </SafeArea>
       </main>
       <BottomTabBar />

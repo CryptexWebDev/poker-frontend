@@ -13,6 +13,8 @@ export function useTablesInfinite() {
       const loaded = allPages.reduce((acc, p) => acc + p.tables.length, 0)
       return loaded < lastPage.total ? loaded : undefined
     },
+    retry: 0,
+    refetchOnWindowFocus: false,
   })
 }
 

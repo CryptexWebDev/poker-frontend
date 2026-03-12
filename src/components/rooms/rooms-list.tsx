@@ -4,7 +4,7 @@ import { RoomCard } from './room-card'
 import clsx from 'clsx'
 
 export function RoomsList({ className }: { className?: string }) {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useTablesInfinite()
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error, refetch } = useTablesInfinite()
   const sentinelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -23,8 +23,17 @@ export function RoomsList({ className }: { className?: string }) {
 
   if (error) {
     return (
-      <div className={clsx('p-4 text-red-400 text-center', className)}>
-        {error instanceof Error ? error.message : 'Не удалось загрузить комнаты'}
+      <div className={clsx('p-4 text-center', className)}>
+        <p className="text-red-400 mb-3">
+          {error instanceof Error ? error.message : 'Не удалось загрузить комнаты'}
+        </p>
+        <button
+          type="button"
+          onClick={() => refetch()}
+          className="rounded-xl bg-accent px-4 py-2 text-tg-button-text font-medium"
+        >
+          Повторить
+        </button>
       </div>
     )
   }

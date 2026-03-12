@@ -42,13 +42,25 @@ export async function fetchProfile(): Promise<Profile> {
 }
 
 const TABLES_PAGE_SIZE = 20
+const FETCH_TABLES_TIMEOUT_MS = 12_000
 
 export async function fetchTables(offset: number): Promise<TablesListResponse> {
-  const res = await fetch(
-    `${baseUrl}/tables?limit=${TABLES_PAGE_SIZE}&offset=${offset}`,
-    { headers: getAuthHeaders() }
-  )
-  return handleResponse<TablesListResponse>(res)
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), FETCH_TABLES_TIMEOUT_MS)
+  try {
+    const res = await fetch(
+      `${baseUrl}/tables?limit=${TABLES_PAGE_SIZE}&offset=${offset}`,
+      { headers: getAuthHeaders(), signal: controller.signal }
+    )
+    return handleResponse<TablesListResponse>(res)
+  } catch (err) {
+    if (err instanceof Error && err.name === 'AbortError') {
+      throw new Error('Таймаут загрузки комнат. Проверьте интернет.')
+    }
+    throw err
+  } finally {
+    clearTimeout(timeoutId)
+  }
 }
 
 export async function createTable(body: CreateTableBody): Promise<TableItem> {
