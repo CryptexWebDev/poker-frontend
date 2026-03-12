@@ -10,8 +10,9 @@ export function useTablesInfinite() {
     queryFn: ({ pageParam }) => fetchTables(pageParam as number),
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
-      const loaded = allPages.reduce((acc, p) => acc + p.tables.length, 0)
-      return loaded < lastPage.total ? loaded : undefined
+      const loaded = allPages.reduce((acc, p) => acc + (p?.tables?.length ?? 0), 0)
+      const total = lastPage?.total ?? 0
+      return total > 0 && loaded < total ? loaded : undefined
     },
     retry: 0,
     refetchOnWindowFocus: false,
