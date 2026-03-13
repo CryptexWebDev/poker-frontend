@@ -11,17 +11,17 @@ const tabs: { to: string; label: string; icon: IconName }[] = [
 export function BottomTabBar() {
   return (
     <nav
-      className="downbar flex items-center justify-center safe-area-insets pb-safe"
+      className="downbar flex items-center justify-center safe-area-insets"
       aria-label="Bottom navigation"
     >
-      <div className="tab-bar-inner flex w-full items-stretch justify-center gap-0 min-h-14 py-2.5">
+      <div className="tab-bar-inner flex w-full items-stretch justify-center gap-0 min-h-11 py-1.5">
         {tabs.map(({ to, label, icon }) => (
           <NavLink
             key={to}
             to={to}
             className={({ isActive }) =>
               clsx(
-                'flex flex-1 min-w-22.5 max-w-30 h-15.5 flex-col items-center justify-center border-0 outline-none ring-0 focus:outline-none focus:ring-0 focus:ring-offset-0 active:outline-none active:ring-0',
+                'flex flex-1 min-w-22.5 max-w-30 h-12 flex-col items-center justify-center border-0 outline-none ring-0 focus:outline-none focus:ring-0 focus:ring-offset-0 active:outline-none active:ring-0',
                 isActive ? 'text-accent' : 'text-tg-hint'
               )
             }
