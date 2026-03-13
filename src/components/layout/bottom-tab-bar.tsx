@@ -11,7 +11,7 @@ const tabs: { to: string; label: string; icon: IconName }[] = [
 export function BottomTabBar() {
   return (
     <nav
-      className="downbar flex items-center justify-center safe-area-insets"
+      className="downbar flex items-center justify-center safe-area-insets pb-safe"
       aria-label="Bottom navigation"
     >
       <div className="tab-bar-inner flex w-full items-stretch justify-center gap-0 min-h-11 py-1.5">
