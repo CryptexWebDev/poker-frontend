@@ -10,8 +10,8 @@
   --color-tg-button-text: var(--tg-theme-button-text-color, #ffffff);
   --color-tg-secondary: var(--tg-theme-secondary-bg-color, #2c2c2e);
   --min-height-viewport: var(--tg-viewport-height, 100vh);
-  /* Tab bar: 60 horizontal padding, 9 gap, 32 top / 48 bottom to viewport (rubber rem) */
-  --spacing-tab-bar-x: 6rem;
+  /* Tab bar: 60px total horizontal padding (30px per side at 390px) */
+  --spacing-tab-bar-x: 1.875rem;
   --spacing-tab-icon-label: 0.9rem;
   --spacing-tab-bar-top: 3.2rem;
   --spacing-tab-bar-bottom: 4.8rem;
