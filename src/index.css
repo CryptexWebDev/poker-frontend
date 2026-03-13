@@ -164,20 +164,25 @@ body::before {
   box-shadow: none;
 }
 
-/* Tab indicator line: 62px wide, centered, 8px gap to icon */
-.tab-bar-indicator {
+/* Tab indicator: 62px wide, centered, 8px gap below to icon */
+.downbar .tab-bar-inner .tab-bar-indicator {
   display: block;
   width: 3.875rem;
   height: 0.125rem;
-  margin-bottom: 0.5rem; /* 8px to icon */
+  margin-bottom: 0.5rem;
   border-radius: 0 0 1.5rem 1.5rem;
   flex-shrink: 0;
 }
-.tab-bar-indicator-active {
+.downbar .tab-bar-inner .tab-bar-indicator-active {
   background-color: var(--color-accent);
 }
-.tab-bar-indicator-inactive {
+.downbar .tab-bar-inner .tab-bar-indicator-inactive {
   background-color: transparent;
+}
+
+/* Icon wrapper: 4px gap below to label */
+.downbar .tab-bar-inner .tab-bar-icon {
+  margin-bottom: 0.25rem;
 }
 
 .tab-bar-label {

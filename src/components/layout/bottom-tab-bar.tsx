@@ -39,7 +39,7 @@ export function BottomTabBar() {
                     )}
                     aria-hidden
                   />
-                  <span className="flex h-5.5 w-5.5 items-center justify-center shrink-0 border-0 outline-none ring-0 [&_svg]:block mb-1">
+                  <span className="tab-bar-icon flex h-5.5 w-5.5 shrink-0 items-center justify-center border-0 outline-none ring-0 [&_svg]:block">
                     <Icon
                       name={icon}
                       sizeRem={1.375}
