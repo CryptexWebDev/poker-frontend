@@ -86,7 +86,6 @@ body::before {
   height: 100%;
   min-height: 100vh;
   min-height: var(--tg-viewport-height, 100vh);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -116,15 +115,12 @@ body::before {
   padding-right: var(--spacing-tab-bar-x);
 }
 
-/* Downbar: top fade into blur, solid at bottom; progressive blur */
-/* Layout: fixed to viewport so no page scroll */
+/* Layout: main = full viewport scroll, tab bar = fixed overlay on top */
 .app-layout-root {
   position: fixed;
   inset: 0;
   height: 100%;
   height: var(--tg-viewport-height, 100vh);
-  max-height: 100vh;
-  max-height: var(--tg-viewport-height, 100vh);
   background: var(--color-app-bg);
 }
 
@@ -140,34 +136,53 @@ body::before {
   z-index: 0;
 }
 
-.app-layout-root > main,
-.app-layout-root > nav {
-  position: relative;
+/* Main: full viewport scroll container, content scrolls behind tab bar */
+.app-layout-main {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   z-index: 1;
 }
 
-/* Tab bar: no solid background, only gradient + blur for smooth transition */
+.app-layout-content {
+  min-height: 100%;
+  min-height: var(--tg-viewport-height, 100vh);
+}
+
 .downbar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 100;
   padding-top: 2.5rem;
-  background: linear-gradient(180deg, rgba(13, 13, 15, 0) 0%, rgba(13, 13, 15, 0.5) 100%) !important;
-  background-color: transparent !important;
+}
+
+/* Blur zone: extends upward, mask creates smooth fade (no hard edge) */
+.downbar::before {
+  content: "";
+  position: absolute;
+  bottom: -0.1875rem;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  background: linear-gradient(180deg, rgba(13, 13, 15, 0) 0%, #0d0d0f 57.83%);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  pointer-events: none;
 }
 
 .downbar .tab-bar-inner {
-  background: none !important;
-  background-color: transparent !important;
-}
-
-.downbar .tab-bar-inner a {
-  background: none !important;
-  background-color: transparent !important;
+  position: relative;
+  z-index: 1;
+  background: none;
+  background-color: transparent;
 }
 
 
