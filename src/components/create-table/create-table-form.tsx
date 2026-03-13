@@ -51,7 +51,7 @@ export function CreateTableForm({ className }: { className?: string }) {
       />
       <PlayerCountSelect value={maxPlayers} onChange={setMaxPlayers} />
       <BetAmountSelect value={buyIn} onChange={setBuyIn} />
-      <CreateTableSubmitButton isPending={createTable.isPending} />
+      <CreateTableSubmitButton isPending={createTable.isPending} className="create-table-submit-btn" />
       {createTable.error && (
         <p className="text-red-400 text-sm text-center" role="alert">
           {createTable.error.message}

@@ -434,6 +434,11 @@ body::before {
   color: var(--color-tg-text);
 }
 
+/* Create table form: 42px before submit button (gap-6=24px + 18px) */
+.create-table-submit-btn {
+  margin-top: 1.125rem; /* 18px extra: 24+18=42px */
+}
+
 /* Create room button: rounded rect, blue gradient, white inner glow */
 .btn-create-room {
   display: block;
