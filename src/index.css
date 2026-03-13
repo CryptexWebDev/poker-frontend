@@ -623,3 +623,200 @@ body::before {
 .btn-join:active {
   box-shadow: 0 -0.125rem 0.5rem rgba(255, 255, 255, 0.35) inset;
 }
+
+/* Profile page */
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.profile-header-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.profile-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--color-tg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-avatar-fallback {
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--color-tg-text);
+}
+.profile-welcome {
+  font-size: 0.75rem;
+  line-height: 100%;
+  color: var(--color-tg-hint);
+  margin-bottom: 0.25rem;
+}
+.profile-username {
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 100%;
+  color: var(--color-tg-text);
+}
+.profile-menu-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background: var(--color-tg-secondary);
+  color: var(--color-tg-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.profile-block {
+  background: #111825;
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+.profile-block-title {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 100%;
+  color: var(--color-tg-text);
+  margin: 0 0 0.75rem 0;
+}
+.profile-balance-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.profile-balance-value {
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 100%;
+  color: var(--color-tg-text);
+}
+.profile-balance-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+.profile-action-btn {
+  flex: 1;
+  padding: 0.875rem 1rem;
+  border-radius: 0.875rem;
+  border: none;
+  outline: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #ebedfa;
+  background: linear-gradient(
+    180deg,
+    rgba(60, 101, 182, 0.95) 0%,
+    var(--color-accent) 50%,
+    rgba(40, 75, 140, 0.95) 100%
+  );
+  box-shadow: 0 -0.125rem 0.75rem rgba(255, 255, 255, 0.4) inset;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.profile-referral {
+  background: #111825;
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+.profile-referral-title {
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 100%;
+  color: var(--color-tg-text);
+  margin: 0 0 1rem 0;
+}
+.profile-referral-stats {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.profile-stat-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #111825;
+  border-radius: 0.75rem;
+  border: 0.0625rem solid rgba(60, 101, 182, 0.3);
+}
+.profile-stat-label {
+  font-size: 0.75rem;
+  line-height: 100%;
+  color: var(--color-tg-hint);
+}
+.profile-stat-value {
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 100%;
+  color: var(--color-tg-text);
+}
+.profile-referral-code-block {
+  padding: 1rem;
+  background: #111825;
+  border-radius: 0.75rem;
+  border: 0.0625rem solid rgba(60, 101, 182, 0.3);
+  margin-bottom: 1rem;
+}
+.profile-referral-code-label {
+  display: block;
+  font-size: 0.75rem;
+  line-height: 100%;
+  color: var(--color-tg-hint);
+  margin-bottom: 0.5rem;
+}
+.profile-referral-code-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.profile-referral-code {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--color-tg-text);
+  word-break: break-all;
+}
+.profile-copy-btn {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-tg-text);
+  -webkit-tap-highlight-color: transparent;
+}
+.profile-invite-btn {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 0.875rem;
+  border: none;
+  outline: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #ebedfa;
+  background: linear-gradient(
+    180deg,
+    rgba(60, 101, 182, 0.95) 0%,
+    var(--color-accent) 50%,
+    rgba(40, 75, 140, 0.95) 100%
+  );
+  box-shadow: 0 -0.125rem 0.75rem rgba(255, 255, 255, 0.4) inset;
+  -webkit-tap-highlight-color: transparent;
+}
