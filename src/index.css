@@ -2,7 +2,9 @@
 
 @theme {
   --color-accent: #3c65b6;
-  --color-tg-bg: var(--tg-theme-bg-color, #1c1c1e);
+  --color-tg-bg: var(--tg-theme-bg-color, #0b111c);
+  --color-app-bg: #0b111c;
+  --gradient-top: radial-gradient(97.66% 97.66% at 50% 0%, #1e3ac6 0%, #2c2460 50%, #1c1c1e 85%, #0b111c 100%);
   --color-tg-text: var(--tg-theme-text-color, #ffffff);
   --color-tg-hint: var(--tg-theme-hint-color, #8e8e93);
   --color-tg-link: var(--tg-theme-link-color, #007aff);
@@ -46,8 +48,27 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--color-tg-bg);
+  background: var(--color-app-bg);
   color: var(--color-tg-text);
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 17.4375rem; /* 279px at 16px base */
+  background: var(--gradient-top);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
 }
 
 #root {
