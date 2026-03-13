@@ -153,10 +153,11 @@ body::before {
   right: 0;
   z-index: 10;
   padding-top: 2rem;
-  background: transparent;
+  background: none;
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
 }
+
 
 .tab-bar-inner a {
   outline: none;

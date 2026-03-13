@@ -9,8 +9,8 @@ export function AppLayout() {
   return (
     <div className="app-layout-root flex flex-col overflow-hidden">
       <main className="min-h-0 flex-1 flex flex-col overflow-auto">
-        <SafeArea className="min-h-full flex-1 flex flex-col">
-          <div className="flex flex-1 flex-col min-h-0 overflow-hidden">
+        <SafeArea className="flex flex-col min-h-full min-h-viewport">
+          <div className="flex flex-col min-h-0">
             <ErrorBoundary>{outlet}</ErrorBoundary>
           </div>
         </SafeArea>
