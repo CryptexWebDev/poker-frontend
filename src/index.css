@@ -20,8 +20,8 @@
   /* Tab bar: 60px total horizontal padding (30px per side at 390px) */
   --spacing-tab-bar-x: 1.875rem;
   --spacing-tab-icon-label: 0.9rem;
-  --spacing-tab-bar-top: 3.2rem;
-  --spacing-tab-bar-bottom: 4.8rem;
+  --spacing-tab-bar-top: 2.5rem;
+  --spacing-tab-bar-bottom: 5.25rem;
   --color-downbar: #0d0d0f;
 }
 
