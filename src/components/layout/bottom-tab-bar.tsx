@@ -22,7 +22,6 @@ export function BottomTabBar() {
             className={({ isActive }) =>
               clsx(
                 'flex flex-1 min-w-22.5 max-w-30 h-15.5 flex-col items-center justify-center border-0 outline-none ring-0 focus:outline-none focus:ring-0 focus:ring-offset-0 active:outline-none active:ring-0',
-                'gap-[0.5rem]',
                 isActive ? 'text-accent' : 'text-tg-hint'
               )
             }
@@ -35,12 +34,12 @@ export function BottomTabBar() {
                 <>
                   <span
                     className={clsx(
-                      'h-0.5 w-[3.875rem] shrink-0 rounded-b-3xl',
-                      isActive ? 'bg-accent' : 'bg-transparent'
+                      'tab-bar-indicator',
+                      isActive ? 'tab-bar-indicator-active' : 'tab-bar-indicator-inactive'
                     )}
                     aria-hidden
                   />
-                  <span className="flex h-5.5 w-5.5 items-center justify-center shrink-0 border-0 outline-none ring-0 [&_svg]:block">
+                  <span className="flex h-5.5 w-5.5 items-center justify-center shrink-0 border-0 outline-none ring-0 [&_svg]:block mb-1">
                     <Icon
                       name={icon}
                       sizeRem={1.375}
