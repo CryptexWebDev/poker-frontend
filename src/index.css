@@ -367,7 +367,7 @@ body::before {
 }
 .room-card-trophy {
   position: absolute;
-  right: 0.5rem;
+  right: 0;
   bottom: -3rem; /* slight overflow so overflow:hidden clips bottom of cup */
   width: 15.09375rem; /* 175px +20% +15% */
   height: 15.09375rem;
