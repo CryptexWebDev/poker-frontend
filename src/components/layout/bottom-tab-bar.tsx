@@ -22,7 +22,7 @@ export function BottomTabBar() {
             className={({ isActive }) =>
               clsx(
                 'flex flex-1 min-w-22.5 max-w-30 h-15.5 flex-col items-center justify-center border-0 outline-none ring-0 focus:outline-none focus:ring-0 focus:ring-offset-0 active:outline-none active:ring-0',
-                'gap-tab-icon-label',
+                'gap-[0.5rem]',
                 isActive ? 'text-accent' : 'text-tg-hint'
               )
             }
@@ -35,7 +35,7 @@ export function BottomTabBar() {
                 <>
                   <span
                     className={clsx(
-                      'mb-0.5 h-0.5 w-15 shrink-0 rounded-b-3xl',
+                      'h-0.5 w-[3.875rem] shrink-0 rounded-b-3xl',
                       isActive ? 'bg-accent' : 'bg-transparent'
                     )}
                     aria-hidden
