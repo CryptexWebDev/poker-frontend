@@ -9,8 +9,8 @@ interface RoomNameInputProps {
 
 export function RoomNameInput({ value, onChange, error, className }: RoomNameInputProps) {
   return (
-    <div className={clsx('flex flex-col gap-1.5', className)}>
-      <label htmlFor="room-name" className="text-tg-text font-medium">
+    <div className={clsx('create-table-field', className)}>
+      <label htmlFor="room-name" className="create-table-label">
         Название комнаты
       </label>
       <input
@@ -19,11 +19,7 @@ export function RoomNameInput({ value, onChange, error, className }: RoomNameInp
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Введите название комнаты"
-        className={clsx(
-          'rounded-xl border bg-tg-secondary px-4 py-3 text-tg-text placeholder:text-tg-hint',
-          'focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent',
-          error ? 'border-red-500' : 'border-tg-hint/30'
-        )}
+        className="create-table-input"
         aria-invalid={Boolean(error)}
         aria-describedby={error ? 'room-name-error' : undefined}
       />

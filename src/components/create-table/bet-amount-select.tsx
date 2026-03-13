@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { TonBetIcon } from '@/components/ui/ton-bet-icon'
 
 const OPTIONS = [5, 10, 15, 20] as const
 
@@ -9,40 +10,21 @@ interface BetAmountSelectProps {
 }
 
 export function BetAmountSelect({ value, onChange, className }: BetAmountSelectProps) {
-  const index = OPTIONS.indexOf(value as 5 | 10 | 15 | 20)
-  const activeIndex = index >= 0 ? index : 0
-
   return (
-    <div className={clsx('flex flex-col gap-2', className)}>
-      <div className="flex items-center justify-between">
-        <span className="text-tg-text font-medium">Сумма ставки</span>
-        <span className="text-tg-text font-semibold">{value} TON</span>
-      </div>
-      <div className="flex gap-1 items-center" aria-hidden>
-        {OPTIONS.map((_, i) => (
-          <span
-            key={i}
-            className={clsx(
-              'h-1 flex-1 rounded-full transition-colors',
-              i <= activeIndex ? 'bg-accent' : 'bg-tg-hint/30'
-            )}
-          />
-        ))}
-      </div>
-      <div className="flex gap-2" role="group" aria-label="Bet amount in TON">
+    <div className={clsx('create-table-field', className)}>
+      <label className="create-table-label">Сумма ставки</label>
+      <div className="bet-amount-options" role="group" aria-label="Bet amount in TON">
         {OPTIONS.map((n) => (
           <button
             key={n}
             type="button"
             onClick={() => onChange(n)}
             className={clsx(
-              'flex-1 rounded-xl py-2.5 flex items-center justify-center gap-1 text-tg-text font-medium transition-colors',
-              value === n
-                ? 'bg-accent/20 border-2 border-accent text-accent'
-                : 'bg-tg-secondary border-2 border-transparent text-tg-hint hover:text-tg-text'
+              'bet-amount-btn',
+              value === n && 'bet-amount-btn-selected'
             )}
           >
-            <span className="text-accent/80" aria-hidden>◆</span>
+            <TonBetIcon />
             {n}
           </button>
         ))}
