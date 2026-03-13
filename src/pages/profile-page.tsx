@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { useProfile } from '@/hooks/use-profile'
 import { useAuthStore } from '@/stores/auth-store'
 import { getInitData, getTelegramUserPhotoUrl } from '@/lib/telegram'
@@ -61,10 +60,11 @@ export function ProfilePage() {
   const displayName =
     [profile.first_name, profile.last_name].filter(Boolean).join(' ') || profile.username || 'Player'
   const photoUrl = getTelegramUserPhotoUrl()
+  const referralCode = profile.referral_code
 
   function handleCopyCode() {
-    if (profile.referral_code && navigator.clipboard) {
-      navigator.clipboard.writeText(profile.referral_code)
+    if (referralCode && navigator.clipboard) {
+      navigator.clipboard.writeText(referralCode)
     }
   }
 
