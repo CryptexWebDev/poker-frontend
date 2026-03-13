@@ -330,18 +330,20 @@ body::before {
   box-shadow: 0 0 1.15rem #3c65b6 inset;
   overflow: hidden;
 }
+/* Glow from Figma: EBEDFA center, 3C65B6 outer, blended ellipses */
 .room-card::before {
   content: "";
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 16rem;
-  height: 16rem;
+  width: 18rem;
+  height: 18rem;
   background: radial-gradient(
     circle at 100% 100%,
-    rgba(60, 100, 220, 0.7) 0%,
-    rgba(40, 75, 200, 0.4) 30%,
-    rgba(30, 58, 198, 0.2) 55%,
+    rgba(235, 237, 250, 0.45) 0%,
+    rgba(235, 237, 250, 0.25) 15%,
+    rgba(60, 101, 182, 0.35) 35%,
+    rgba(60, 101, 182, 0.15) 55%,
     transparent 80%
   );
   filter: blur(1rem);
