@@ -10,7 +10,7 @@ export function AppLayout() {
     <div className="app-layout-root flex flex-col overflow-hidden">
       <main className="min-h-0 flex-1 flex flex-col overflow-auto">
         <SafeArea className="min-h-full flex-1 flex flex-col">
-          <div className="flex-1 flex flex-col min-h-full">
+          <div className="flex flex-1 flex-col min-h-0 overflow-hidden">
             <ErrorBoundary>{outlet}</ErrorBoundary>
           </div>
         </SafeArea>

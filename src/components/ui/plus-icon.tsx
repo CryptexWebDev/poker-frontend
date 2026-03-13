@@ -1,12 +1,12 @@
 /**
  * Plus icon for add balance button.
- * 14x14 design, stroke white (currentColor)
+ * 12x12 (0.75rem), stroke white (currentColor)
  */
 export function PlusIcon({ className }: { className?: string }) {
   return (
     <svg
-      width="0.875rem"
-      height="0.875rem"
+      width="0.75rem"
+      height="0.75rem"
       viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

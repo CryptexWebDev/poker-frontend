@@ -59,13 +59,13 @@ export function HomePage() {
   }
 
   return (
-    <div className="p-4 flex flex-col min-h-[70vh]">
-      <UserBalanceBar profile={profile} className="mb-4" />
-      <h1 className="text-lg font-semibold text-tg-text mb-4">Создай либо найди стол</h1>
-      <div className="flex-1 min-h-32 overflow-auto">
+    <div className="p-4 flex flex-1 flex-col min-h-0">
+      <UserBalanceBar profile={profile} className="mb-4 shrink-0" />
+      <h1 className="text-lg font-semibold text-tg-text mb-4 shrink-0">Создай либо найди стол</h1>
+      <div className="min-h-32 flex-1 overflow-auto">
         <RoomsList className="mb-4" />
       </div>
-      <CreateRoomButton />
+      <CreateRoomButton className="shrink-0" />
     </div>
   )
 }

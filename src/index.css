@@ -237,10 +237,10 @@ body::before {
   font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 600;
   font-size: 0.75rem;
-  line-height: 120%;
   letter-spacing: 0.07px;
   text-align: center;
   color: #ffffff;
+  line-height: 100%;
 }
 .user-balance-bar-add-btn {
   display: flex;
