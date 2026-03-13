@@ -186,7 +186,6 @@ body::before {
 }
 
 .tab-bar-label {
-  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 0.75rem;
@@ -208,14 +207,12 @@ body::before {
   background: var(--color-tg-secondary, #2c2c2e);
 }
 .user-balance-bar-avatar-fallback {
-  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 590;
+  font-weight: 500;
   font-size: 1rem;
   color: var(--color-tg-text, #fff);
 }
 .user-balance-bar-name {
-  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 590;
+  font-weight: 500;
   font-style: normal;
   font-size: 1rem;
   line-height: 100%;
@@ -237,7 +234,6 @@ body::before {
   margin-left: 0.25rem; /* 4px additional: 4px gap + 4px = 8px total from TON icon */
 }
 .user-balance-bar-balance-text {
-  font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 600;
   font-size: 0.75rem;
   letter-spacing: 0.07px;
@@ -289,8 +285,7 @@ body::before {
       rgba(255, 255, 255, 0) 100%
     ) border-box;
   box-shadow: 0 -0.125rem 0.75rem rgba(255, 255, 255, 0.4) inset;
-  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 510;
+  font-weight: 500;
   font-style: normal;
   font-size: 0.875rem; /* 14px */
   line-height: 100%;
@@ -350,8 +345,7 @@ body::before {
   pointer-events: none;
 }
 .room-card-title {
-  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 510;
+  font-weight: 500;
   font-size: 1.125rem;
   line-height: 100%;
   letter-spacing: -0.05em;
@@ -361,8 +355,7 @@ body::before {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 510;
+  font-weight: 500;
   font-size: 0.75rem;
   line-height: 100%;
   letter-spacing: -0.05em;
@@ -404,8 +397,7 @@ body::before {
       rgba(255, 255, 255, 0) 100%
     ) border-box;
   box-shadow: 0 -0.125rem 0.75rem rgba(255, 255, 255, 0.4) inset;
-  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 510;
+  font-weight: 500;
   font-size: 0.875rem;
   line-height: 100%;
   letter-spacing: -0.05em;
