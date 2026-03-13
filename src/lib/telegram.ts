@@ -83,6 +83,13 @@ export function expandTelegram(): void {
 export function getTelegramUserPhotoUrl(): string | null {
   if (typeof window === 'undefined') return null
   try {
+    const params = retrieveLaunchParams() as { initData?: { user?: { photo_url?: string } } }
+    const fromParams = params?.initData?.user?.photo_url
+    if (fromParams) return fromParams
+  } catch {
+    // SDK may not expose initData
+  }
+  try {
     const unsafe = (window.Telegram?.WebApp as { initDataUnsafe?: { user?: { photo_url?: string } } })?.initDataUnsafe
     return unsafe?.user?.photo_url ?? null
   } catch {
