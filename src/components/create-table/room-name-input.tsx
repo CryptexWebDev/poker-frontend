@@ -16,6 +16,7 @@ export function RoomNameInput({ value, onChange, error, className }: RoomNameInp
       <input
         id="room-name"
         type="text"
+        autoComplete="off"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Введите название комнаты"
