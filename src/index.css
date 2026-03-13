@@ -339,9 +339,9 @@ body::before {
   height: 16rem;
   background: radial-gradient(
     circle at 100% 100%,
-    rgba(30, 58, 198, 0.45) 0%,
-    rgba(30, 58, 198, 0.25) 35%,
-    rgba(30, 58, 198, 0.1) 60%,
+    rgba(60, 100, 220, 0.7) 0%,
+    rgba(40, 75, 200, 0.4) 30%,
+    rgba(30, 58, 198, 0.2) 55%,
     transparent 80%
   );
   filter: blur(1rem);
