@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { useTablesInfinite } from '@/hooks/use-tables'
 import { RoomCard } from './room-card'
+import { RoomCardSkeleton } from './room-card-skeleton'
 import type { TableItem } from '@/types/api'
 import clsx from 'clsx'
 
@@ -41,8 +42,10 @@ export function RoomsList({ className }: { className?: string }) {
 
   if (isLoading) {
     return (
-      <div className={clsx('p-4 text-center', className)}>
-        <span className="inline-block animate-pulse text-accent font-medium">Загрузка комнат...</span>
+      <div className={clsx('flex flex-col gap-3', className)}>
+        {Array.from({ length: 4 }).map((_, i) => (
+          <RoomCardSkeleton key={i} />
+        ))}
       </div>
     )
   }
@@ -60,9 +63,6 @@ export function RoomsList({ className }: { className?: string }) {
             <RoomCard key={table.id} table={table} />
           ))}
           <div ref={sentinelRef} aria-hidden className="h-2 shrink-0" />
-          {isFetchingNextPage && (
-            <p className="text-tg-hint text-center py-2 text-sm">Загрузка...</p>
-          )}
         </>
       )}
     </div>
