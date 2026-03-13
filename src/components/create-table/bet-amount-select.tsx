@@ -14,7 +14,7 @@ export function BetAmountSelect({ value, onChange, className }: BetAmountSelectP
   const filledCount = activeIndex >= 0 ? activeIndex + 1 : 1
 
   return (
-    <div className={clsx('create-table-field', className)}>
+    <div className={clsx('create-table-field', 'bet-amount-field', className)}>
       <div className="bet-amount-label-row">
         <label className="create-table-label">Сумма ставки</label>
         <span className="bet-amount-value">{value} TON</span>

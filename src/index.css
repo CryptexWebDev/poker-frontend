@@ -344,6 +344,11 @@ body::before {
   color: var(--color-tg-text);
 }
 
+/* Create table: bet amount - 18px gap between label, indicator, buttons */
+.bet-amount-field {
+  gap: 1.125rem; /* 18px */
+}
+
 /* Create table: bet amount - label row with value */
 .bet-amount-label-row {
   display: flex;
