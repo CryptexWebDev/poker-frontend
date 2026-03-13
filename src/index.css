@@ -338,6 +338,55 @@ body::before {
   color: var(--color-tg-text);
 }
 
+/* Create table: bet amount - label row with value */
+.bet-amount-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bet-amount-value {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+  color: var(--color-tg-text);
+}
+
+/* Bet amount indicator: dots and lines */
+.bet-amount-indicator {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.bet-amount-indicator-segment {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.bet-amount-indicator-segment:last-child {
+  flex: 0;
+}
+.bet-amount-indicator-dot {
+  width: 0.75rem; /* 12px */
+  height: 0.75rem;
+  border-radius: 50%;
+  background: #3c3c4352;
+  flex-shrink: 0;
+}
+.bet-amount-indicator-dot-filled {
+  background: #007aff;
+}
+.bet-amount-indicator-line {
+  flex: 1;
+  height: 0.125rem;
+  margin: 0 0.125rem;
+  background: #3c3c4352;
+  border-radius: 0.0625rem;
+}
+.bet-amount-indicator-line-filled {
+  background: #007aff;
+}
+
 /* Create table: bet amount buttons (same as player count) */
 .bet-amount-options {
   display: flex;
