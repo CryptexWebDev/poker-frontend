@@ -7,7 +7,7 @@ export function AppLayout() {
   const outlet = useOutlet()
 
   return (
-    <div className="app-layout-root flex flex-col overflow-hidden bg-tg-bg">
+    <div className="app-layout-root flex flex-col overflow-hidden">
       <main className="min-h-0 flex-1 flex flex-col overflow-auto">
         <SafeArea className="min-h-full flex-1 flex flex-col">
           <div className="flex-1 flex flex-col min-h-full">

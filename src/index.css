@@ -114,6 +114,25 @@ body::before {
   height: var(--tg-viewport-height, 100vh);
   max-height: 100vh;
   max-height: var(--tg-viewport-height, 100vh);
+  background: var(--color-app-bg);
+}
+
+.app-layout-root::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 17.4375rem;
+  background: var(--gradient-top);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app-layout-root > main,
+.app-layout-root > nav {
+  position: relative;
+  z-index: 1;
 }
 
 .downbar {

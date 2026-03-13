@@ -9,7 +9,7 @@ interface SafeAreaProps {
 export function SafeArea({ children, className }: SafeAreaProps) {
   return (
     <div
-      className={clsx('min-h-viewport bg-tg-bg text-tg-text pb-safe safe-area-insets', className)}
+      className={clsx('min-h-viewport text-tg-text pb-safe safe-area-insets', className)}
     >
       {children}
     </div>
