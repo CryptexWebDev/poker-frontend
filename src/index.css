@@ -20,7 +20,8 @@
 
 :root {
   --tg-viewport-height: 100vh;
-  --root-font-size: clamp(8px, 2.6667vw, 12px);
+  /* 1rem = 16px при ширине вёрстки 390px: 100vw / 24.375 ≈ 4.1026vw */
+  --root-font-size: clamp(12px, calc(100vw / 24.375), 18px);
 }
 
 @layer base {
@@ -127,41 +128,47 @@ body {
   text-align: center;
 }
 
-/* Create room button: pill shape, blue gradient, hover glow */
+/* Create room button: rounded rect, blue gradient, white inner glow */
 .btn-create-room {
   display: block;
   width: 100%;
-  padding: 1.2rem 1rem;
-  border-radius: 9999px;
+  padding: 1.125rem 1.125rem;
+  border-radius: 19px;
+  border: 1px solid transparent;
+  border-image-source: radial-gradient(
+    93.47% 100% at 50% 0%,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-image-slice: 1;
   background: linear-gradient(
     180deg,
     rgba(60, 101, 182, 0.95) 0%,
     var(--color-accent, #3c65b6) 50%,
     rgba(40, 75, 140, 0.95) 100%
   );
+  box-shadow: 0px -3px 18.5px rgba(255, 255, 255, 0.7) inset;
   font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 510;
-  font-size: 1.4rem;
+  font-style: normal;
+  font-size: 14px;
   line-height: 100%;
   letter-spacing: -0.05em;
   text-align: center;
-  color: var(--color-tg-button-text, #ffffff);
-  transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  color: #ebedfa;
+  transition: box-shadow 0.2s ease;
 }
 .btn-create-room:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 20px rgba(60, 101, 182, 0.5);
-  filter: brightness(1.08);
+  box-shadow: 0px -3px 22px rgba(255, 255, 255, 0.85) inset;
 }
 .btn-create-room:active {
-  transform: scale(0.98);
+  box-shadow: 0px -3px 14px rgba(255, 255, 255, 0.6) inset;
 }
 .btn-create-room:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  transform: none;
+  box-shadow: 0px -3px 10px rgba(255, 255, 255, 0.4) inset;
 }
 .btn-create-room:disabled:hover {
-  box-shadow: none;
-  filter: none;
+  box-shadow: 0px -3px 10px rgba(255, 255, 255, 0.4) inset;
 }
