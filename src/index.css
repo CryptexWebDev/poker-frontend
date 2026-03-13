@@ -227,11 +227,14 @@ body::before {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  width: 6rem;
+  min-width: 6rem;
   height: 2rem;
   padding: 0.25rem 0.25rem 0.25rem 0.375rem;
   border-radius: 1.5rem;
   background: rgba(255, 255, 255, 0.05);
+}
+.user-balance-bar-balance .user-balance-bar-add-btn {
+  margin-left: 0.25rem; /* 4px additional: 4px gap + 4px = 8px total from TON icon */
 }
 .user-balance-bar-balance-text {
   font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;

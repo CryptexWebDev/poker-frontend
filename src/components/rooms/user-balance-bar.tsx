@@ -47,16 +47,14 @@ export function UserBalanceBar({ profile, className }: UserBalanceBarProps) {
       <div className="user-balance-bar-balance">
         <span className="user-balance-bar-balance-text">{balance}</span>
         <TonIcon className="shrink-0" />
+        <button
+          type="button"
+          className="user-balance-bar-add-btn"
+          aria-label="Add balance"
+        >
+          <PlusIcon />
+        </button>
       </div>
-
-      {/* Add button */}
-      <button
-        type="button"
-        className="user-balance-bar-add-btn"
-        aria-label="Add balance"
-      >
-        <PlusIcon />
-      </button>
     </div>
   )
 }
