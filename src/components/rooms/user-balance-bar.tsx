@@ -55,7 +55,7 @@ export function UserBalanceBar({ profile, className }: UserBalanceBarProps) {
         className="user-balance-bar-add-btn"
         aria-label="Add balance"
       >
-        <PlusIcon className="h-full w-full" />
+        <PlusIcon />
       </button>
     </div>
   )
