@@ -4,7 +4,12 @@
   --color-accent: #3c65b6;
   --color-tg-bg: var(--tg-theme-bg-color, #0b111c);
   --color-app-bg: #0b111c;
-  --gradient-top: radial-gradient(97.66% 97.66% at 50% 0%, #1e3ac6 0%, #1c1c1e 100%);
+  --gradient-top: radial-gradient(
+    97.66% 97.66% at 50% 0%,
+    #1e3ac6 0%,
+    #1c1c1e 70%,
+    #0b111c 100%
+  );
   --color-tg-text: var(--tg-theme-text-color, #ffffff);
   --color-tg-hint: var(--tg-theme-hint-color, #8e8e93);
   --color-tg-link: var(--tg-theme-link-color, #007aff);
