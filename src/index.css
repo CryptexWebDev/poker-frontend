@@ -149,7 +149,7 @@ body {
       rgba(255, 255, 255, 0.7) 0%,
       rgba(255, 255, 255, 0) 100%
     ) border-box;
-  box-shadow: 0 -0.1875rem 1.15625rem rgba(255, 255, 255, 0.7) inset; /* 0 -3px 18.5px */
+  box-shadow: 0 -0.125rem 0.75rem rgba(255, 255, 255, 0.4) inset;
   font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 510;
   font-style: normal;
@@ -161,16 +161,16 @@ body {
   transition: box-shadow 0.2s ease;
 }
 .btn-create-room:hover {
-  box-shadow: 0 -0.1875rem 1.375rem rgba(255, 255, 255, 0.85) inset; /* 0 -3px 22px */
+  box-shadow: 0 -0.125rem 0.9rem rgba(255, 255, 255, 0.5) inset;
 }
 .btn-create-room:active {
-  box-shadow: 0 -0.1875rem 0.875rem rgba(255, 255, 255, 0.6) inset; /* 0 -3px 14px */
+  box-shadow: 0 -0.125rem 0.5rem rgba(255, 255, 255, 0.35) inset;
 }
 .btn-create-room:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  box-shadow: 0 -0.1875rem 0.625rem rgba(255, 255, 255, 0.4) inset; /* 0 -3px 10px */
+  box-shadow: 0 -0.125rem 0.5rem rgba(255, 255, 255, 0.25) inset;
 }
 .btn-create-room:disabled:hover {
-  box-shadow: 0 -0.1875rem 0.625rem rgba(255, 255, 255, 0.4) inset;
+  box-shadow: 0 -0.125rem 0.5rem rgba(255, 255, 255, 0.25) inset;
 }
