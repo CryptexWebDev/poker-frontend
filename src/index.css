@@ -35,6 +35,12 @@
   html {
     font-size: var(--root-font-size);
   }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .pb-safe {
@@ -379,7 +385,7 @@ body::before {
 .bet-amount-indicator-line {
   flex: 1;
   height: 0.125rem;
-  margin: 0 0.125rem;
+  margin: 0 0.5rem; /* 8px gap from dot to line */
   background: #3c3c4352;
   border-radius: 0.0625rem;
 }
@@ -571,6 +577,7 @@ body::before {
 
 /* Join button: like create-room but fit, larger */
 .btn-join {
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
