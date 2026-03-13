@@ -376,22 +376,25 @@ body::before {
   height: 100%;
 }
 
-/* Room card skeleton */
-.room-card-skeleton-title {
+/* Room card skeleton: same layout as room-card (title, players, btn) */
+.room-card-skeleton .room-card-skeleton-title {
   width: 60%;
   height: 1.125rem;
+  margin-bottom: 0.25rem;
   border-radius: 0.25rem;
   background: rgba(255, 255, 255, 0.1);
   animation: skeleton-pulse 1.5s ease-in-out infinite;
 }
-.room-card-skeleton-players {
+.room-card-skeleton .room-card-skeleton-players {
   width: 3rem;
   height: 0.75rem;
+  margin-bottom: 0.75rem;
   border-radius: 0.25rem;
   background: rgba(255, 255, 255, 0.08);
   animation: skeleton-pulse 1.5s ease-in-out infinite;
 }
-.room-card-skeleton-btn {
+.room-card-skeleton .room-card-skeleton-btn {
+  align-self: flex-start;
   width: 4.5rem;
   height: 2.25rem;
   border-radius: 0.8125rem;

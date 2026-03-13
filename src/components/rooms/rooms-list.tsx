@@ -44,7 +44,7 @@ export function RoomsList({ className }: { className?: string }) {
   if (isLoading) {
     return (
       <div className={clsx('flex flex-col gap-3', className)}>
-        {Array.from({ length: 4 }).map((_, i) => (
+        {Array.from({ length: 3 }).map((_, i) => (
           <RoomCardSkeleton key={i} />
         ))}
       </div>
@@ -63,7 +63,7 @@ export function RoomsList({ className }: { className?: string }) {
           {tables.map((table) => (
             <RoomCard key={table.id} table={table} />
           ))}
-          <div ref={sentinelRef} aria-hidden className="h-2 shrink-0" />
+          {hasNextPage && <RoomCardSkeleton ref={sentinelRef} />}
         </>
       )}
     </div>
