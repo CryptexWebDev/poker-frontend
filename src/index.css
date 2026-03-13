@@ -229,7 +229,7 @@ body::before {
   gap: 0.25rem;
   min-width: 6rem;
   height: 2rem;
-  padding: 0.25rem 0.25rem 0.25rem 0.375rem;
+  padding: 0.25rem 0.25rem 0.25rem 0.7813rem;
   border-radius: 1.5rem;
   background: rgba(255, 255, 255, 0.05);
 }
@@ -314,7 +314,7 @@ body::before {
   box-shadow: 0 -0.125rem 0.5rem rgba(255, 255, 255, 0.25) inset;
 }
 
-/* Room card: 358x127, dark bg, blue border */
+/* Room card: 358x127, dark bg, blue border, blurred corner highlight */
 .room-card {
   position: relative;
   display: flex;
@@ -330,6 +330,22 @@ body::before {
   background: #111825;
   box-shadow: 0 0 1.15rem #3c65b6 inset;
   overflow: hidden;
+}
+.room-card::before {
+  content: "";
+  position: absolute;
+  right: -2rem;
+  bottom: -2rem;
+  width: 8rem;
+  height: 8rem;
+  background: radial-gradient(
+    circle at 100% 100%,
+    rgba(30, 58, 198, 0.6) 0%,
+    rgba(30, 58, 198, 0.3) 40%,
+    transparent 70%
+  );
+  filter: blur(1.5rem);
+  pointer-events: none;
 }
 .room-card-title {
   font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -364,14 +380,14 @@ body::before {
   height: 100%;
 }
 
-/* Join button: like create-room but fit, smaller text */
+/* Join button: like create-room but fit, larger */
 .btn-join {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: fit-content;
-  padding: 0.5rem 1.125rem;
-  border-radius: 0.6875rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.8125rem;
   border: 0.0625rem solid transparent;
   background:
     linear-gradient(
@@ -388,7 +404,7 @@ body::before {
   box-shadow: 0 -0.125rem 0.75rem rgba(255, 255, 255, 0.4) inset;
   font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 510;
-  font-size: 0.625rem;
+  font-size: 0.875rem;
   line-height: 100%;
   letter-spacing: -0.05em;
   text-align: center;
