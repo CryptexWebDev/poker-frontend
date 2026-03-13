@@ -284,12 +284,12 @@ body::before {
   padding: 1rem; /* 16px */
   border-radius: 0.875rem; /* 14px */
   border: 0.0625rem solid #3c65b6;
-  background: transparent;
+  background: #111929;
   font-weight: 500;
   font-size: 0.75rem; /* 12px */
   line-height: 100%;
   letter-spacing: -0.05em;
-  text-align: center;
+  text-align: left;
   color: var(--color-tg-text);
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -328,7 +328,7 @@ body::before {
 }
 .player-count-btn-selected {
   border: 0.0625rem solid #3c65b6;
-  box-shadow: 0 -0.1875rem 1.15625rem 0 rgba(255, 255, 255, 0.698) inset;
+  box-shadow: 0 -0.0625rem 0.5rem 0 rgba(255, 255, 255, 0.12) inset;
 }
 .player-count-btn:not(.player-count-btn-selected) {
   border: 0.0625rem solid transparent;
@@ -364,7 +364,7 @@ body::before {
 }
 .bet-amount-btn-selected {
   border: 0.0625rem solid #3c65b6;
-  box-shadow: 0 -0.1875rem 1.15625rem 0 rgba(255, 255, 255, 0.698) inset;
+  box-shadow: 0 -0.0625rem 0.5rem 0 rgba(255, 255, 255, 0.12) inset;
 }
 .bet-amount-btn:not(.bet-amount-btn-selected) {
   border: 0.0625rem solid transparent;
