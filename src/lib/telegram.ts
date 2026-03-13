@@ -75,3 +75,17 @@ export function notifyTelegramReady(): void {
 export function expandTelegram(): void {
   window.Telegram?.WebApp?.expand()
 }
+
+/**
+ * User photo URL from Telegram profile (when user has set a photo).
+ * Returns null if no photo or not inside TMA.
+ */
+export function getTelegramUserPhotoUrl(): string | null {
+  if (typeof window === 'undefined') return null
+  try {
+    const unsafe = (window.Telegram?.WebApp as { initDataUnsafe?: { user?: { photo_url?: string } } })?.initDataUnsafe
+    return unsafe?.user?.photo_url ?? null
+  } catch {
+    return null
+  }
+}
