@@ -1,5 +1,7 @@
 import clsx from 'clsx'
 import { getTelegramUserPhotoUrl } from '@/lib/telegram'
+import { TonIcon } from '@/components/ui/ton-icon'
+import { PlusIcon } from '@/components/ui/plus-icon'
 import type { Profile } from '@/types/api'
 
 interface UserBalanceBarProps {
@@ -8,17 +10,19 @@ interface UserBalanceBarProps {
 }
 
 export function UserBalanceBar({ profile, className }: UserBalanceBarProps) {
-  const displayName = [profile.first_name, profile.last_name].filter(Boolean).join(' ') || profile.username || 'Player'
+  const displayName =
+    [profile.first_name, profile.last_name].filter(Boolean).join(' ') || profile.username || 'Player'
   const balance = profile.balance
   const photoUrl = getTelegramUserPhotoUrl()
 
   return (
     <div
-      className={clsx('flex items-center gap-3 py-2', className)}
+      className={clsx('flex items-center gap-3', className)}
       aria-label={`User ${displayName}, balance ${balance} TON`}
     >
+      {/* Avatar 42x42 */}
       <div
-        className="h-10 w-10 rounded-full bg-tg-secondary flex items-center justify-center text-tg-text font-semibold shrink-0 overflow-hidden"
+        className="user-balance-bar-avatar"
         aria-hidden
       >
         {photoUrl ? (
@@ -30,18 +34,29 @@ export function UserBalanceBar({ profile, className }: UserBalanceBarProps) {
             referrerPolicy="no-referrer"
           />
         ) : (
-          displayName.charAt(0).toUpperCase()
+          <span className="user-balance-bar-avatar-fallback">
+            {displayName.charAt(0).toUpperCase()}
+          </span>
         )}
       </div>
-      <div className="min-w-0 flex-1">
-        <p className="text-tg-text font-medium truncate">{displayName}</p>
-        <p className="text-tg-hint text-sm flex items-center gap-1 flex-wrap">
-          <span>{balance}</span>
-          <span className="text-accent">TON</span>
-          <span className="text-tg-hint text-xs">· ID {profile.telegram_id}</span>
-          <span className="text-accent ml-1" aria-hidden>+</span>
-        </p>
+
+      {/* Name */}
+      <p className="user-balance-bar-name min-w-0 flex-1 truncate">{displayName}</p>
+
+      {/* Balance block */}
+      <div className="user-balance-bar-balance">
+        <span className="user-balance-bar-balance-text">{balance}</span>
+        <TonIcon className="shrink-0" />
       </div>
+
+      {/* Add button */}
+      <button
+        type="button"
+        className="user-balance-bar-add-btn"
+        aria-label="Add balance"
+      >
+        <PlusIcon className="h-full w-full" />
+      </button>
     </div>
   )
 }
