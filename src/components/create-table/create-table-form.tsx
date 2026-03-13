@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { RoomNameInput } from './room-name-input'
 import { PlayerCountSelect } from './player-count-select'
 import { BetAmountSelect } from './bet-amount-select'
+import { CreateTableSubmitButton } from './create-table-submit-button'
 import { useCreateTable } from '@/hooks/use-tables'
 import clsx from 'clsx'
 
@@ -50,13 +51,7 @@ export function CreateTableForm({ className }: { className?: string }) {
       />
       <PlayerCountSelect value={maxPlayers} onChange={setMaxPlayers} />
       <BetAmountSelect value={buyIn} onChange={setBuyIn} />
-      <button
-        type="submit"
-        disabled={createTable.isPending}
-        className="btn-create-room"
-      >
-        {createTable.isPending ? 'Создание...' : 'Создать свою комнату'}
-      </button>
+      <CreateTableSubmitButton isPending={createTable.isPending} />
       {createTable.error && (
         <p className="text-red-400 text-sm text-center" role="alert">
           {createTable.error.message}
