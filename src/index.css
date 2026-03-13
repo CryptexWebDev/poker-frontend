@@ -329,10 +329,10 @@ body::before {
 .room-card::before {
   content: "";
   position: absolute;
-  right: -5rem;
-  bottom: -5rem;
-  width: 18rem;
-  height: 18rem;
+  right: -15rem;
+  bottom: -15rem;
+  width: 17.125rem;
+  height: 11.5625rem;
   background: radial-gradient(
     circle at 100% 100%,
     rgba(235, 237, 250, 0.45) 0%,
