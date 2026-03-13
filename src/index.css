@@ -329,8 +329,8 @@ body::before {
 .room-card::before {
   content: "";
   position: absolute;
-  right: -15rem;
-  bottom: -15rem;
+  right: -3rem;
+  bottom: -6rem;
   width: 17.125rem;
   height: 11.5625rem;
   background: radial-gradient(
