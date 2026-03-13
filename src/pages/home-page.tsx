@@ -3,7 +3,6 @@ import { useAuthStore } from '@/stores/auth-store'
 import { getInitData } from '@/lib/telegram'
 import { UserBalanceBar } from '@/components/rooms/user-balance-bar'
 import { RoomsList } from '@/components/rooms/rooms-list'
-import { CreateRoomButton } from '@/components/rooms/create-room-button'
 
 export function HomePage() {
   const { data: profile, isLoading, error } = useProfile()
@@ -63,9 +62,8 @@ export function HomePage() {
       <UserBalanceBar profile={profile} className="mb-4 shrink-0" />
       <h1 className="text-lg font-semibold text-tg-text mb-4 shrink-0">Создай либо найди стол</h1>
       <div className="min-h-32 flex-1 overflow-auto">
-        <RoomsList className="mb-4" />
+        <RoomsList />
       </div>
-      <CreateRoomButton className="shrink-0" />
     </div>
   )
 }

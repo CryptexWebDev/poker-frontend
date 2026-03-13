@@ -313,3 +313,92 @@ body::before {
 .btn-create-room:disabled:hover {
   box-shadow: 0 -0.125rem 0.5rem rgba(255, 255, 255, 0.25) inset;
 }
+
+/* Room card: 358x127, dark bg, blue border */
+.room-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 22.375rem;
+  min-height: 7.9375rem;
+  padding: 1.5rem;
+  border-radius: 2rem;
+  border: 0.125rem solid #3c65b6;
+  background: #111825;
+  box-shadow: 0 0 1.15rem #3c65b6 inset;
+  overflow: hidden;
+}
+.room-card-title {
+  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 510;
+  font-size: 1.125rem;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+  color: #ebedfa;
+}
+.room-card-players {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 510;
+  font-size: 0.75rem;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+  color: #d2e2ff;
+}
+.room-card-trophy {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0;
+  width: 6rem;
+  height: 6rem;
+  opacity: 0.25;
+  pointer-events: none;
+}
+.room-card-trophy svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Join button: like create-room but fit, smaller text */
+.btn-join {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 0.5rem 1.125rem;
+  border-radius: 0.6875rem;
+  border: 0.0625rem solid transparent;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(60, 101, 182, 0.95) 0%,
+      var(--color-accent, #3c65b6) 50%,
+      rgba(40, 75, 140, 0.95) 100%
+    ) padding-box,
+    radial-gradient(
+      93.47% 100% at 50% 0%,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ) border-box;
+  box-shadow: 0 -0.125rem 0.75rem rgba(255, 255, 255, 0.4) inset;
+  font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 510;
+  font-size: 0.625rem;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+  text-align: center;
+  color: #ebedfa;
+  transition: box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-join:hover {
+  box-shadow: 0 -0.125rem 0.9rem rgba(255, 255, 255, 0.5) inset;
+}
+.btn-join:active {
+  box-shadow: 0 -0.125rem 0.5rem rgba(255, 255, 255, 0.35) inset;
+}
