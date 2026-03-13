@@ -6,7 +6,8 @@ import type { TableItem } from '@/types/api'
 import clsx from 'clsx'
 
 export function RoomsList({ className }: { className?: string }) {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error, refetch } = useTablesInfinite()
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error, refetch } =
+    useTablesInfinite()
   const sentinelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
